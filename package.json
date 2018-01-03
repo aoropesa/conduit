@@ -5,7 +5,8 @@
   "author": "Randy Ferrer <randfer@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./app.js"
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
