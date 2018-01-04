@@ -1,0 +1,36 @@
+// User auth stuff
+// Steps to build out features in our app.
+1. Create the Mongoose Models
+2. Create any helper methods on our models
+3. Create route middleware required for the feature
+4. Create the route to expose the functionality to the users
+
+// For JWT token Payload:
+1. id - db id of the user
+2. username
+3. exp - Unix timestamp in seconds...determines when the token will expire.
+60 days in the future.
+
+// Where do you go from here?
+1. Mongoose
+2. Cryptography - as applied in a node app. bcrypt
+3. Express routing
+4. Passport
+5. Node...
+6. HTTP error codes
+
+{
+    "user": {
+        "username": "bob",
+        "email": "bob@fvi.edu",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhNGQ5NjVkYjZlYzQzMjM0ZDRlNjFkMSIsInVzZXJuYW1lIjoiYm9iIiwiZXhwIjoxNTIwMjE4NjQ4LCJpYXQiOjE1MTUwMzQ2NDh9.GTJq36h72yOxI2Mp5IBZZmeXqH0VGc8CKZcYs3HDN54"
+    }
+}
+
+{
+    "user": {
+        "username": "bob",
+        "email": "bob@fvi.edu",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhNGQ5NjVkYjZlYzQzMjM0ZDRlNjFkMSIsInVzZXJuYW1lIjoiYm9iIiwiZXhwIjoxNTIwMjE4OTk0LCJpYXQiOjE1MTUwMzQ5OTR9.5zTjLhi-slPJABMLnbucbOOJy4x_mTJ_yYRAo-bfcY4"
+    }
+}
