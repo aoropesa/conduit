@@ -4,7 +4,6 @@ var passport = require('passport');
 var User = mongoose.model('User');
 var auth = require('../auth');
 
-// sign-up
 router.post('/users', function(req, res, next) {
   var user = new User();
 
@@ -20,7 +19,6 @@ router.post('/users', function(req, res, next) {
     .catch(next);
 });
 
-// login
 router.post('/users/login', function(req, res, next) {
   if (!req.body.user.email) {
     return res.status(422).json({ errors: { email: "can't be blank" } });
@@ -44,7 +42,6 @@ router.post('/users/login', function(req, res, next) {
   })(req, res, next);
 });
 
-// get current users auth payload from their token
 router.get('/user', auth.required, function(req, res, next) {
   User.findById(req.payload.id)
     .then(function(user) {
@@ -57,7 +54,6 @@ router.get('/user', auth.required, function(req, res, next) {
     .catch(next);
 });
 
-// update user data
 router.put('/user', auth.required, function(req, res, next) {
   User.findById(req.payload.id)
     .then(function(user) {
@@ -65,7 +61,7 @@ router.put('/user', auth.required, function(req, res, next) {
         return res.sendStatus(401);
       }
 
-      // only update fileds that were actually passed in...
+      // only update fields that were actually passed...
       if (typeof req.body.user.username !== 'undefined') {
         user.username = req.body.user.username;
       }
@@ -83,7 +79,7 @@ router.put('/user', auth.required, function(req, res, next) {
       }
 
       if (typeof req.body.user.password !== 'undefined') {
-        user.password = req.body.user.password;
+        user.setPassword(req.body.user.password);
       }
 
       return user.save().then(function() {
